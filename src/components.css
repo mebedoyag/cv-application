@@ -3,21 +3,36 @@ form {
   border: 2px solid gray;
   border-radius: 8px;
   padding: 10px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-form div {
+form div div {
   margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
 }
 
 button {
   margin-top: 20px;
   border: none;
   border-radius: 8px;
-  padding: 10px;
+  padding: 10px;  
 }
 
 button:hover {
   cursor: pointer;
   background: greenyellow;
   color: rgb(61, 61, 61);
+}
+
+.lab-tasks {
+  color: red;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

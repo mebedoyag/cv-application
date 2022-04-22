@@ -19,18 +19,20 @@ class Education extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <div>
-          <label htmlFor="school">School: </label>
-          <input type="text" id="school" ref={this.refSchool} />
+          <div>
+            <label htmlFor="school">School: </label>
+            <input type="text" id="school" ref={this.refSchool} />
+          </div>
+          <div>
+            <label htmlFor="career">Career: </label>
+            <input type="text" id="career" ref={this.refCareer} />
+          </div>
+          <div>
+            <label htmlFor="dat">Date: </label>
+            <input type="date" id="dat" ref={this.refDate} />
+          </div>
+          {/* <button type="button">Edit</button> */}
         </div>
-        <div>
-          <label htmlFor="career">Career: </label>
-          <input type="text" id="career" ref={this.refCareer} />
-        </div>
-        <div>
-          <label htmlFor="dat">Date: </label>
-          <input type="date" id="dat" ref={this.refDate} />
-        </div>
-        {/* <button type="button">Edit</button> */}
         <button type="submit">Submit</button>
       </form>
     );

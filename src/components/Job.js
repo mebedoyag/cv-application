@@ -24,26 +24,28 @@ class Job extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <div>
-          <label htmlFor="company">Company: </label>
-          <input type="text" id="company" ref={this.refCompany} />
+          <div>
+            <label htmlFor="company">Company: </label>
+            <input type="text" id="company" ref={this.refCompany} />
+          </div>
+          <div>
+            <label htmlFor="position">Position: </label>
+            <input type="text" id="position" ref={this.refPosition} />
+          </div>
+          <div className="lab-tasks">
+            <label  htmlFor="tasks">Tasks: </label>
+            <textarea id="tasks" defaultValue="lorem ipsum" ref={this.refTasks}></textarea>
+          </div>
+          <div>
+            <label htmlFor="dat1">Date Start: </label>
+            <input type="date" id="dat1" ref={this.refStartDate} />
+          </div>
+          <div>
+            <label htmlFor="dat2">Date End: </label>
+            <input type="date" id="dat2" ref={this.refEndDate} />
+          </div>
+          {/* <button type="button">Edit</button> */}
         </div>
-        <div>
-          <label htmlFor="position">Position: </label>
-          <input type="text" id="position" ref={this.refPosition} />
-        </div>
-        <div>
-          <label htmlFor="tasks">Tasks: </label>
-          <textarea id="tasks" defaultValue="lorem ipsum" ref={this.refTasks}></textarea>
-        </div>
-        <div>
-          <label htmlFor="dat1">Date Start: </label>
-          <input type="date" id="dat1" ref={this.refStartDate} />
-        </div>
-        <div>
-          <label htmlFor="dat2">Date End: </label>
-          <input type="date" id="dat2" ref={this.refEndDate} />
-        </div>
-        {/* <button type="button">Edit</button> */}
         <button type="submit">Submit</button>
       </form>
     );
