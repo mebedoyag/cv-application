@@ -17,22 +17,22 @@ class Contact extends React.Component {
   }
 
   render() {
+    const { name, email, phone } = this.props;
     return (
       <form onSubmit={this.handleSubmit}>
         <div>
           <div>
             <label htmlFor="name">Name: </label>
-            <input type="text" id="name" ref={this.refName} />
+            <input type="text" id="name" ref={this.refName} value={name ? name : null} />
           </div>
           <div>
             <label htmlFor="email">Email: </label>
-            <input type="email" id="email" ref={this.refEmail} />
+            <input type="email" id="email" ref={this.refEmail} value={email ? email : null} />
           </div>
           <div>
             <label htmlFor="phone">Phone: </label>
-            <input type="number" ref={this.refPhone} />
+            <input type="number" ref={this.refPhone} value={phone ? phone : null} />
           </div>
-          {/* <button type="button">Edit</button> */}
         </div>
         <button type="submit">Submit</button>
       </form>

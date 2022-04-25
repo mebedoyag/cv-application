@@ -11,7 +11,6 @@ import JobSent from './components/JobSent';
 class App extends React.Component  {
   state = {
     contact: {
-      isEditing: false,
       isSend: false,
       name: "",
       email: "",
@@ -33,37 +32,21 @@ class App extends React.Component  {
     }
   }
 
-  saveContact = contact => {
+  modContact = (contact = this.state.contact) => {
     const temp = this.state.contact.isSend ? false : true;
     const copyContact = { ...this.state.contact, ...contact, isSend: temp };
     this.setState({ contact: copyContact });
   }
 
-  editContact = () => {
-    const temp = this.state.contact.isSend ? false : true;
-    const copyContact = { ...this.state.contact, isSend: temp };
-    this.setState({ contact: copyContact });
-  }
-
-  saveEducation = education => {
-    const copyEducation = { ...this.state.education, ...education, isSend: true };
+  modEducation = (education = this.state.education) => {
+    const temp = this.state.education.isSend ? false : true;
+    const copyEducation = { ...this.state.education, ...education, isSend: temp };
     this.setState({ education: copyEducation });
   }
 
-  editEducation = () => {
-    const temp = this.state.education.isSend ? false : true;
-    const copyEdu = { ...this.state.education, isSend: temp };
-    this.setState({ education: copyEdu });
-  }
-
-  saveJob = job => {
-    const copyJob = { ...this.state.job, ...job, isSend: true };
-    this.setState({ job: copyJob });
-  }
-
-  editJob = () => {
+  modJob = (job = this.state.job) => {
     const temp = this.state.job.isSend ? false : true;
-    const copyJob = { ...this.state.job, isSend: temp };
+    const copyJob = { ...this.state.job, ...job, isSend: temp };
     this.setState({ job: copyJob });
   }
 
@@ -74,19 +57,57 @@ class App extends React.Component  {
           <h1>CV Application</h1>
             <div className='container'>
               {
-                !this.state.contact.isSend ? <Contact saveContact={this.saveContact} /> : <ContactSent editContact={this.editContact} name={this.state.contact.name} email={this.state.contact.email} phone={this.state.contact.phone} />
+                !this.state.contact.isSend ? 
+                  <Contact 
+                    saveContact={this.modContact} 
+                    name={this.state.contact.name} 
+                    email={this.state.contact.email} 
+                    phone={this.state.contact.phone} 
+                  /> : 
+                  <ContactSent 
+                    editContact={this.modContact} 
+                    name={this.state.contact.name} 
+                    email={this.state.contact.email} 
+                    phone={this.state.contact.phone} 
+                  />
               }
               {
-                !this.state.education.isSend ? <Education saveEducation={this.saveEducation} /> : <EducationSent editEducation ={this.editEducation} school={this.state.education.school} career={this.state.education.career} date={this.state.education.date} />
+                !this.state.education.isSend ? 
+                  <Education 
+                    saveEducation={this.modEducation} 
+                    editEducation ={this.modEducation}    
+                    school={this.state.education.school} 
+                    career={this.state.education.career} 
+                    date={this.state.education.date} 
+                  /> : 
+                  <EducationSent 
+                    editEducation ={this.modEducation}    
+                    school={this.state.education.school} 
+                    career={this.state.education.career} 
+                    date={this.state.education.date} 
+                  />
               }
               {
-                !this.state.job.isSend ? <Job saveJob={this.saveJob} /> : <JobSent editJob={this.editJob} company={this.state.job.company} position={this.state.job.position} tasks={this.state.job.tasks} startDate={this.state.job.startDate} endDate={this.state.job.endDate} />
+                !this.state.job.isSend ? 
+                  <Job 
+                    saveJob={this.modJob} 
+                    company={this.state.job.company} 
+                    position={this.state.job.position} 
+                    tasks={this.state.job.tasks} 
+                    startDate={this.state.job.startDate} 
+                    endDate={this.state.job.endDate}
+                  /> : 
+                  <JobSent  
+                    editJob={this.modJob} 
+                    company={this.state.job.company} 
+                    position={this.state.job.position} 
+                    tasks={this.state.job.tasks} 
+                    startDate={this.state.job.startDate} 
+                    endDate={this.state.job.endDate} 
+                  />
               }
-
             </div>
         </div>
-
-        {/* <button onClick={this.handleClick}>Edit</button> */}
       </>
     );
   }

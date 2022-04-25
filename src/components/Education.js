@@ -16,20 +16,21 @@ class Education extends React.Component {
   }
 
   render() {
+    const { school, career, date } = this.props;
     return (
       <form onSubmit={this.handleSubmit}>
         <div>
           <div>
             <label htmlFor="school">School: </label>
-            <input type="text" id="school" ref={this.refSchool} />
+            <input type="text" id="school" ref={this.refSchool} value={school ? school : null} />
           </div>
           <div>
             <label htmlFor="career">Career: </label>
-            <input type="text" id="career" ref={this.refCareer} />
+            <input type="text" id="career" ref={this.refCareer} value={career ? career : null} />
           </div>
           <div>
             <label htmlFor="dat">Date: </label>
-            <input type="date" id="dat" ref={this.refDate} />
+            <input type="date" id="dat" ref={this.refDate} value={date ? date : null} />
           </div>
           {/* <button type="button">Edit</button> */}
         </div>
