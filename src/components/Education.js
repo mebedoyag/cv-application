@@ -1,43 +1,42 @@
 import React from "react";
 
-class Education extends React.Component {
-  refSchool = React.createRef();
-  refCareer = React.createRef();
-  refDate = React.createRef();
+const Education = (props) => {
+  const refSchool = React.createRef();
+  const refCareer = React.createRef();
+  const refDate = React.createRef();
 
-  handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const education = {
-      school: this.refSchool.current.value,
-      career: this.refCareer.current.value,
-      date: this.refDate.current.value,
+      isSend: true,
+      school: refSchool.current.value,
+      career: refCareer.current.value,
+      date: refDate.current.value,
     }
-    this.props.saveEducation(education)
+    props.saveEducation(education)
   }
 
-  render() {
-    const { school, career, date } = this.props;
-    return (
-      <form onSubmit={this.handleSubmit}>
+  const { school, career, date } = props;
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <div>
         <div>
-          <div>
-            <label htmlFor="school">School: </label>
-            <input type="text" id="school" ref={this.refSchool} value={school ? school : null} />
-          </div>
-          <div>
-            <label htmlFor="career">Career: </label>
-            <input type="text" id="career" ref={this.refCareer} value={career ? career : null} />
-          </div>
-          <div>
-            <label htmlFor="dat">Date: </label>
-            <input type="date" id="dat" ref={this.refDate} value={date ? date : null} />
-          </div>
-          {/* <button type="button">Edit</button> */}
+          <label htmlFor="school">School: </label>
+          <input type="text" id="school" ref={refSchool} value={school ? school : null} />
         </div>
-        <button type="submit">Submit</button>
-      </form>
-    );
-  }
+        <div>
+          <label htmlFor="career">Career: </label>
+          <input type="text" id="career" ref={refCareer} value={career ? career : null} />
+        </div>
+        <div>
+          <label htmlFor="dat">Date: </label>
+          <input type="date" id="dat" ref={refDate} value={date ? date : null} />
+        </div>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  );
 }
 
 export default Education;

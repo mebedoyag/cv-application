@@ -1,18 +1,15 @@
 import React from "react";
 
-class EducationSent extends React.Component {
+const EducationSent = (props) => {
 
-
-  render() {
-    return (
-      <div>
-        <h2>School: {this.props.school}</h2>
-        <h3>Career: {this.props.career}</h3>
-        <h3>Date: {this.props.date}</h3>
-        <button onClick={() => this.props.editEducation()}>Edit</button>
-      </div>
-    )
-  }
+  return (
+    <div>
+      <h2>School: {props.school}</h2>
+      <h3>Career: {props.career}</h3>
+      <h3>Date: {props.date}</h3>
+      <button onClick={() => props.editEducation()}>Edit</button>
+    </div>
+  )
 }
 
 export default EducationSent;

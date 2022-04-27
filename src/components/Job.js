@@ -11,6 +11,7 @@ class Job extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const job = {
+      isSend: true,
       company: this.refCompany.current.value,
       position: this.refPosition.current.value,
       tasks: this.refTasks.current.value,

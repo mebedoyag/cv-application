@@ -124,18 +124,26 @@ function App() {
     phone: "",
   });
 
+  const [education, setEducation] = useState({
+    isSend: false,
+    school: "",
+    career: "",
+    date: "",
+  });
+
+  const [job, setJob] = useState({
+    editJob: false,
+    company: "",
+    position: "",
+    tasks: "",
+    startDate: "",
+    endDate: "",
+  })
+
+
   useEffect(() => {
     
   });
-
-  // const modContact = (param = contact) => {
-  //   const copy = { ...contact, ...param };
-  //   copy.isSend = copy.isSend ? false : true;
-  //   setContact({ contact: copy })
-  //   // const temp = contact.isSend ? false : true;
-  //   // const copyContact = { ...contact, ...param, isSend: temp };
-  //   // setContact({ contact: copyContact });
-  // }
 
   const saveContact = (cont) => {
     setContact(cont)
@@ -146,11 +154,28 @@ function App() {
     setContact(copy);
   }
 
+  const saveEducation = (cont) => {
+    setEducation(cont)
+  }
+
+  const editEducation = () => {
+    const copy = { ...education, isSend: false };
+    setEducation(copy);
+  }
+
+  const saveJob = (cont) => {
+    setJob(cont)
+  }
+
+  const editJob = () => {
+    const copy = { ...job, isSend: false };
+    setJob(copy);
+  }
+
   return (
     <div className='wrapper'>
       <h1>CV Application</h1>
         <div className='container'>
-        {/* {!contact.isSend ? <div>Primero aaaaaaaa</div> : <div>segundo bbbbbb</div>} */}
           {!contact.isSend ? 
             <Contact 
               saveContact={saveContact} 
@@ -158,10 +183,42 @@ function App() {
               email={contact.email} 
               phone={contact.phone} /> : 
             <ContactSent 
-            editContact={editContact} 
-            name={contact.name} 
-            email={contact.email} 
-            phone={contact.phone} />
+              editContact={editContact} 
+              name={contact.name} 
+              email={contact.email} 
+              phone={contact.phone} />
+          }
+          {!education.isSend ? 
+            <Education 
+              saveEducation={saveEducation}   
+              school={education.school} 
+              career={education.career} 
+              date={education.date} 
+            /> : 
+            <EducationSent 
+              editEducation={editEducation}    
+              school={education.school} 
+              career={education.career} 
+              date={education.date} 
+            />
+          }
+          {!job.isSend ? 
+            <Job 
+              saveJob={saveJob}
+              company={job.company} 
+              position={job.position} 
+              tasks={job.tasks} 
+              startDate={job.startDate} 
+              endDate={job.endDate}
+            /> : 
+            <JobSent  
+              editJob={editJob} 
+              company={job.company} 
+              position={job.position} 
+              tasks={job.tasks} 
+              startDate={job.startDate} 
+              endDate={job.endDate} 
+            />
           }
         </div>
     </div>
